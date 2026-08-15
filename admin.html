@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+  <button id="botaoVoltarIndex" class="botao-voltar-index" type="button">
+    ← Voltar
+  </button>
+  <header>
+    <h1>Catálogo de Piercings</h1>
+    <p>Modelos disponíveis, categorias e informações para você escolher com facilidade.</p>
+  </header>
+
+  <div class="area-admin">
+    <button id="abrirPainelAdmin" class="link-admin" type="button">Admin</button>
+  </div>
+
+  <main class="container">
+
+    <div id="filtrosCategorias" class="filtros"></div>
+    <div id="status" class="loading">Carregando produtos...</div>
+    <section id="galeria" class="galeria"></section>
+  </main>
+
+
+
+  <div id="modalPainelAdmin" class="modal-fundo">
+    <div class="modal">
+      <h2>Área administrativa</h2>
+      <p>Escolha o que você quer editar no catálogo.</p>
+
+      <div class="painel-admin-acoes">
+        <button id="abrirAdmin" class="botao-painel" type="button">
+          Adicionar fotos
+        </button>
+
+        <button id="abrirCategorias" class="botao-painel" type="button">
+          Gerenciar categorias
+        </button>
+      </div>
+
+      <button id="fecharPainelAdmin" class="botao-fechar" type="button">Fechar</button>
+    </div>
+  </div>
+
+  <div id="modalAdmin" class="modal-fundo">
+    <div class="modal">
+      <h2>Adicionar foto</h2>
+      <p>Preencha as informações e escolha uma ou mais imagens.</p>
+
+      <div class="campo">
+        <label for="tituloUpload">Título</label>
+        <input id="tituloUpload" type="text" placeholder="Ex: Piercing argola em aço cirúrgico">
+      </div>
+
+      <div class="campo">
+        <label for="precoUpload">Preço</label>
+      <input id="precoUpload" type="text" placeholder="Ex: 19,90">
+      </div>
+
+      <div class="campo">
+        <label for="categoriaUpload">Categorias</label>
+        <select id="categoriaUpload" multiple></select>
+        <small class="ajuda-campo">Pode selecionar mais de uma categoria.</small>
+      </div>
+
+      <div class="campo">
+        <label for="descricaoUpload">Descrição</label>
+        <textarea id="descricaoUpload" placeholder="Ex: Aço cirúrgico, tamanho, cor, observações..."></textarea>
+      </div>
+
+      <label for="fotoCamera" class="botao-secundario">Tirar foto agora</label>
+      <input type="file" id="fotoCamera" class="input-file" accept="image/*" capture="environment" />
+
+      <label for="fotoGaleria" class="botao-escolher">Escolher imagens da galeria</label>
+      <input type="file" id="fotoGaleria" class="input-file" accept="image/*" multiple />
+
+      <div id="preview" class="preview">
+        <img id="imagemPreview" src="" alt="Prévia da imagem">
+        <div id="nomeArquivo" class="nome-arquivo"></div>
+      </div>
+
+      <button id="abrirCorteUpload" class="botao-secundario botao-cortar" disabled type="button">
+        Editar/cortar imagem(ns)
+      </button>
+
+      <button id="botaoEnviar" class="botao-enviar" disabled type="button">Enviar para o catálogo</button>
+      <button id="fecharAdmin" class="botao-fechar" type="button">Fechar</button>
+      <div id="statusUpload" class="status-upload"></div>
+    </div>
+  </div>
+
+  <div id="modalEditar" class="modal-fundo">
+    <div class="modal">
+      <h2>Editar informações</h2>
+      <p>Altere o título, preço, categoria e descrição do produto.</p>
+
+      <div class="campo">
+        <label for="tituloEditar">Título</label>
+        <input id="tituloEditar" type="text">
+      </div>
+
+      <div class="campo">
+        <label for="precoEditar">Preço</label>
+       <input id="precoEditar" type="text" placeholder="Ex: 19,90">
+      </div>
+
+      <div class="campo">
+        <label for="categoriaEditar">Categorias</label>
+        <select id="categoriaEditar" multiple></select>
+        <small class="ajuda-campo">Pode selecionar mais de uma categoria.</small>
+      </div>
+
+      <div class="campo">
+        <label for="descricaoEditar">Descrição</label>
+        <textarea id="descricaoEditar"></textarea>
+      </div>
+      <div class="area-imagens-extras">
+        <h3>Adicionar mais imagens</h3>
+        <p>Escolha uma ou mais fotos para incluir nesse mesmo card/carrossel.</p>
+
+        <label for="imagensExtrasEditar" class="botao-secundario">
+          Escolher imagens para adicionar
+        </label>
+
+        <input
+          type="file"
+          id="imagensExtrasEditar"
+          class="input-file"
+          accept="image/*"
+          multiple
+        />
+
+        <div id="nomeImagensExtras" class="nome-arquivo-extra"></div>
+
+        <button id="abrirCorteExtras" class="botao-secundario botao-cortar" disabled type="button">
+          Editar/cortar imagens selecionadas
+        </button>
+
+        <button id="botaoAdicionarImagens" class="botao-enviar" disabled type="button">
+          Adicionar imagens ao card
+        </button>
+
+        <div id="statusImagensExtras" class="status-upload"></div>
+      </div>
+
+
+      <button id="salvarEdicao" class="botao-enviar" type="button">Salvar alterações</button>
+      <button id="fecharEditar" class="botao-fechar" type="button">Fechar</button>
+      <div id="statusEditar" class="status-upload"></div>
+    </div>
+  </div>
+
+  <div id="modalCategorias" class="modal-fundo">
+    <div class="modal">
+      <h2>Gerenciar categorias</h2>
+      <p>Crie, edite ou apague categorias do catálogo.</p>
+
+      <div class="campo">
+        <label for="novaCategoria">Nova categoria</label>
+        <input id="novaCategoria" type="text" placeholder="Ex: Aço cirúrgico">
+      </div>
+      <button id="criarCategoria" class="botao-enviar" type="button">Criar categoria</button>
+
+      <div id="listaCategorias" class="lista-categorias"></div>
+      <button id="fecharCategorias" class="botao-fechar" type="button">Fechar</button>
+      <div id="statusCategorias" class="status-upload"></div>
+    </div>
+  </div>
+
+
+
+  <div id="modalCorteImagem" class="modal-fundo">
+    <div class="modal">
+      <h2>Cortar imagem</h2>
+      <p>Arraste a imagem para posicionar e use o zoom para ajustar o recorte quadrado.</p>
+
+      <div class="crop-area">
+        <div class="crop-box">
+          <canvas id="canvasCorte" width="900" height="900"></canvas>
+        </div>
+
+        <div class="controle-corte">
+          <label for="zoomCorte">Zoom</label>
+          <input id="zoomCorte" type="range" min="1" max="3" step="0.01" value="1">
+        </div>
+
+        <div id="infoCorte" class="info-corte"></div>
+
+        <div class="acoes-corte">
+          <button id="corteAnterior" class="botao-secundario" type="button">Anterior</button>
+          <button id="corteProxima" class="botao-secundario" type="button">Próxima</button>
+        </div>
+
+        <button id="salvarCorte" class="botao-enviar" type="button">Salvar corte</button>
+        <button id="usarOriginalCorte" class="botao-secundario" type="button">Usar sem cortar</button>
+        <button id="fecharCorte" class="botao-fechar" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/admin.js"></script>
+ 
+</body>
+</html>
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Catálogo de Piercings</title>
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+  >
+</head>
+
+<body>
+
+  <div class="top-actions">
+    <button
+      id="abrirLoginAdmin"
+      class="admin-btn"
+      type="button"
+    >
+      Admin
+    </button>
+  </div>
+
+  <header>
+    <div class="tag-topo">
+      Piercings • Catálogo online
+    </div>
+
+    <h1>Catálogo de Piercings</h1>
+
+    <a
+      href="https://www.instagram.com/lari.piercer_/"
+      class="instagram-header"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="/img/instagram-2016-logo-svgrepo-com.svg"
+        alt="Instagram da Larissa Hirayama"
+      >
+    </a>
+
+    <section class="sobre-profissional">
+      <div class="foto-profissional">
+        <img
+          src="/img/larissa.jpeg"
+          alt="Foto de Larissa Hirayama"
+        >
+      </div>
+
+      <div class="info-profissional">
+        <h2>LARISSA HIRAYAMA</h2>
+        <p>Body Piercer • Lash Designer</p>
+      </div>
+    </section>
+
+    <p class="descricao-catalogo">
+      Modelos disponíveis, categorias e informações para você escolher com facilidade.
+    </p>
+  </header>
+
+  <main class="container">
+
+    <div class="aviso">
+      Use as categorias para encontrar o modelo ideal.
+    </div>
+
+    <div
+      id="filtrosCategorias"
+      class="filtros"
+    ></div>
+
+    <div
+      id="status"
+      class="loading"
+    >
+      Carregando produtos...
+    </div>
+
+    <section
+      id="galeria"
+      class="galeria"
+    ></section>
+
+  </main>
+
+  <a
+    class="whatsapp"
+    href="https://wa.me/5512991597509"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Chamar no WhatsApp
+  </a>
+
+  <!-- MODAL LOGIN ADMIN -->
+  <div
+    id="modalLoginAdmin"
+    class="modal-fundo"
+  >
+
+    <div class="modal-login">
+
+      <h2>Login administrativo</h2>
+
+      <p>
+        Entre com o email e a senha para acessar a área de edição do catálogo.
+      </p>
+
+      <!-- EMAIL -->
+      <div class="campo-login">
+        <label for="emailAdmin">
+          Email
+        </label>
+
+        <input
+          id="emailAdmin"
+          type="email"
+          autocomplete="username"
+          placeholder="Digite o email"
+        >
+      </div>
+
+      <!-- SENHA -->
+      <div class="campo-login">
+        <label for="senhaAdmin">
+          Senha
+        </label>
+
+        <div class="campo-senha">
+
+          <input
+            id="senhaAdmin"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Digite a senha"
+          >
+
+          <button
+            id="alternarSenhaAdmin"
+            class="btn-ver-senha"
+            type="button"
+            aria-label="Mostrar senha"
+          >
+
+            <!-- OLHO ABERTO -->
+            <svg
+              class="icone-olho-aberto"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 5c-5.5 0-9.5 4.5-10 5.1a1.5 1.5 0 0 0 0 1.8C2.5 12.5 6.5 17 12 17s9.5-4.5 10-5.1a1.5 1.5 0 0 0 0-1.8C21.5 9.5 17.5 5 12 5Zm0 10c-4 0-7.2-3-8.3-4 1.1-1 4.3-4 8.3-4s7.2 3 8.3 4c-1.1 1-4.3 4-8.3 4Zm0-6a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
+              />
+            </svg>
+
+            <!-- OLHO FECHADO -->
+            <svg
+              class="icone-olho-fechado"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3.3 2 2 3.3l3 3C3.3 7.6 2.3 9 2 9.4a1.5 1.5 0 0 0 0 1.8C2.5 11.8 6.5 16.3 12 16.3c1.5 0 2.9-.3 4.1-.8l4.6 4.5 1.3-1.3L3.3 2Zm8.7 12.3c-4 0-7.2-3-8.3-4 .6-.6 1.5-1.4 2.6-2.1l2.1 2.1A3 3 0 0 0 12 14c.3 0 .6 0 .9-.1l1.6 1.6c-.8.2-1.6.4-2.5.4Zm8.3-4c-.6.6-1.5 1.4-2.6 2.1l-1.5-1.5A3 3 0 0 0 12 7c-.4 0-.8.1-1.1.2L9.4 5.7c.8-.2 1.7-.4 2.6-.4 5.5 0 9.5 4.5 10 5.1.2.2.2.6 0 .9-.3.4-.9 1.1-1.7 2Z"
+              />
+            </svg>
+
+          </button>
+
+        </div>
+      </div>
+
+      <button
+        id="entrarAdmin"
+        class="btn-login"
+        type="button"
+      >
+        Entrar
+      </button>
+
+      <button
+        id="fecharLoginAdmin"
+        class="btn-fechar-login"
+        type="button"
+      >
+        Fechar
+      </button>
+
+      <div
+        id="statusLoginAdmin"
+        class="status-login"
+      ></div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
